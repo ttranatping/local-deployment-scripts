@@ -1,6 +1,5 @@
-& scripts/stop-pa.ps1
-
-mkdir temp
+& scripts/stop-pingaccess.ps1
+& scripts/make-temp.ps1
 
 Expand-Archive -Force binaries/pingaccess-*.zip ./temp
 mv temp/pingaccess-* temp/pingaccess

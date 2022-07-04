@@ -1,6 +1,5 @@
-& scripts/stop-pf.ps1
-
-mkdir temp
+& scripts/stop-pingfederate.ps1
+& scripts/make-temp.ps1
 
 Expand-Archive -Force binaries/pingfederate-*.zip ./temp
 mv ./temp/pingfederate-*/pingfederate ./temp/pingfederate

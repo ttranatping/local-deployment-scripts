@@ -1,3 +1,3 @@
-./scripts/stop-pf.sh
-./scripts/stop-pa.sh
-./scripts/stop-pd.sh
+./scripts/stop-pingfederate.sh
+./scripts/stop-pingaccess.sh
+./scripts/stop-pingdirectory.sh

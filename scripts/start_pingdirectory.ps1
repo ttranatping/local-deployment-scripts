@@ -1,6 +1,5 @@
-& scripts/stop-pd.ps1
-
-mkdir temp
+& scripts/stop-pingdirectory.ps1
+& scripts/make-temp.ps1
 
 Expand-Archive -Force binaries/PingDirectory-*.zip ./temp
 

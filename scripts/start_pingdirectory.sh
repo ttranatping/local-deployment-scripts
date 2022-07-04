@@ -1,5 +1,5 @@
-./scripts/stop-pd.sh
-mkdir temp
+./scripts/stop-pingdirectory.sh
+./scripts/make-temp.sh
 
 unzip -q binaries/PingDirectory-*.zip -d ./temp
 
