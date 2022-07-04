@@ -1,0 +1,14 @@
+version: 1
+
+dn: cn=adminusers,ou=Groups,${USER_BASE_DN}
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: adminusers
+uniqueMember: uid=CRN0,ou=people,${USER_BASE_DN}
+
+dn: cn=helpdesk,ou=Groups,${USER_BASE_DN}
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: helpdesk
+uniqueMember: uid=CRN0,ou=people,${USER_BASE_DN}
+uniqueMember: uid=CRN1,ou=people,${USER_BASE_DN}
