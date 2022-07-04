@@ -1,0 +1,12 @@
+ID=00395496
+Product=PingAccess
+Version=7.1
+EnforcementType=3
+Tier=Free
+IssueDate=2022-06-27
+ExpirationDate=2023-06-27
+DeploymentMethod=Docker
+Organization=Ping Identity Corporation
+Name=PingAccess-DEVOPS_OVERRIDE-Production
+SignCode=FF03
+Signature=302D02150096DF4FBFD825C4B440A7C96B2A72D802CA44DF1D02143FC6C407BF67F1CD4DEADE4763E08AF227EF55BB
