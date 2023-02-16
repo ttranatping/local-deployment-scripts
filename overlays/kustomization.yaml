@@ -1,0 +1,94 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+
+resources:
+#- ../config/pingdelegator
+- ../config/pingdirectory
+- ../config/pingfederate-cluster
+#- ../config/pingdataconsole
+
+# The only difference in standalone deployments vs "fullstack" (integrated) is the product configurations.
+# here we replace standalone server-profiles ("getting-started") with "baseline" for each product
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+- name: pingfederate-admin-environment-variables
+  behavior: replace
+  envs:
+    - pf-devops
+    - pf.env
+    - env_vars.common
+    - env_vars.pingfederate-admin
+- name: pingfederate-engine-environment-variables
+  behavior: replace
+  envs:
+    - pf-devops
+    - pf.env
+    - env_vars.common
+    - env_vars.pingfederate-engine
+- name: pingdirectory-environment-variables
+  behavior: replace
+  envs:
+    - devops
+    - env_vars.common
+    - env_vars.pingdirectory
+
+patches:
+- target:
+    kind: StatefulSet
+    name: ^pingdirectory$
+  patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 2
+- target:
+    kind: Deployment
+    name: ^pingfederate$
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: pingidentity/pingfederate:edge
+- target:
+    kind: Deployment
+    name: ^pingfederate-admin$
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: pingidentity/pingfederate:edge
+- target:
+    kind: Deployment
+    name: ^pingdirectory$
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: pingidentity/pingdirectory:edge
+- target:
+    kind: StatefulSet
+    name: ^pingdirectory$
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: pingidentity/pingdirectory:edge
+- target:
+    kind: StatefulSet
+    name: pingdirectory
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/volumeMounts
+      value: [{"name":"out-dir-100","mountPath":"/opt/out"}]
+- target:
+    kind: StatefulSet
+    name: pingdirectory
+  patch: |-
+    - op: add
+      path: /spec/volumeClaimTemplates
+      value: [{"metadata":{"name":"out-dir-100"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"120Gi"}}}}]
+- target:
+    kind: StatefulSet
+    name: pingdirectory
+  patch: |-
+    - op: add
+      path: /spec/template/spec/volumes
+      value: [{"name":"out-dir-100","persistentVolumeClaim":{"claimName":"out-dir-100"}}]

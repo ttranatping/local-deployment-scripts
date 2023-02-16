@@ -1,0 +1,7 @@
+dsconfig create-authorization-policy-decision-shared-secret \
+  --secret-name "Shared Secret PDP" \
+  --set "shared-secret:2FederateM0re"
+
+dsconfig set-http-servlet-extension-prop \
+  --extension-name "JSON PDP API" \
+  --add "shared-secrets:Shared Secret PDP"

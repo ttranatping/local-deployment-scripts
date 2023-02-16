@@ -1,0 +1,14 @@
+ID=00392321
+WSTrustSTS=true
+OAuth=true
+SaasProvisioning=true
+Product=PingFederate
+Version=11.1
+EnforcementType=3
+Tier=Free
+IssueDate=2022-06-20
+ExpirationDate=2023-06-20
+DeploymentMethod=Docker
+Organization=Ping Identity Corporation
+SignCode=FF0F
+Signature=302C0214515900460C0087CE980222CEE1D197DB0C6A2B8302144F99CB8751AB969FD6F6C4248AD0D2A2F1216DB2

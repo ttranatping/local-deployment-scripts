@@ -1,0 +1,26 @@
+dsconfig create-external-server \
+	--server-name pingauthorizepap \
+	--type policy \
+	--set base-url:https://localhost:8443 \
+	--set hostname-verification-method:allow-all \
+	--set key-manager-provider:Null \
+	--set "trust-manager-provider:Blind Trust" \
+	--set shared-secret:2FederateM0re \
+	--set decision-node:e51688ff-1dc9-4b6c-bb36-8af64d02e9d1 \
+	--set branch:defaultPolicies.SNAPSHOT
+
+dsconfig set-policy-decision-service-prop \
+	--set pdp-mode:external \
+	--set policy-server:pingauthorizepap
+
+dsconfig create-policy-configuration-key \
+    --key-name PINGDIRECTORY_HOSTNAME  \
+    --set "policy-configuration-value:pingdirectory:1443"
+
+dsconfig create-policy-configuration-key \
+    --key-name PINGFEDERATE_HOSTNAME  \
+    --set "policy-configuration-value:pingfederate:9031"
+
+dsconfig create-policy-configuration-key \
+    --key-name AttributeProcessing.SpEL.AllowedClasses  \
+    --set "policy-configuration-value:java.util.Base64"

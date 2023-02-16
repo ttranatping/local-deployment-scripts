@@ -1,0 +1,12 @@
+ID=00395495
+Product=PingDirectory
+Version=9.1
+EnforcementType=3
+Tier=Free
+IssueDate=2022-06-27
+ExpirationDate=2023-06-27
+DeploymentMethod=Docker
+Organization=Ping Identity Corporation
+Name=PingDirectory-DEVOPS_OVERRIDE-Production
+SignCode=FF03
+Signature=302C02140743C101CDBB7A890066E2AAB2A2F08E4246CBB602145EF7646CDE1AC3EA683BE3F719C6957C12492D16

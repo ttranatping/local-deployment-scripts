@@ -22,6 +22,21 @@ dsconfig create-root-dn-user \
     --set password<${ROOT_USER_PASSWORD_FILE}
 
 #
+# PingAuthorize User
+#
+dsconfig create-root-dn-user \
+    --user-name "pingauthorize"  \
+    --set alternate-bind-dn:cn=pingauthorize  \
+    --set alternate-bind-dn:cn=paz  \
+    --set inherit-default-root-privileges:false  \
+    --set privilege:bypass-acl  \
+    --set privilege:bypass-pw-policy  \
+    --set privilege:config-read  \
+    --set privilege:password-reset  \
+    --set privilege:unindexed-search \
+    --set password<${ROOT_USER_PASSWORD_FILE}
+
+#
 # Create a user for pingfederate
 #
 dsconfig create-root-dn-user \
