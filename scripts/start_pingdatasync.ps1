@@ -11,4 +11,5 @@ $Env:ROOT_USER_DN="cn=administrator"
 $Env:ROOT_USER_PASSWORD_FILE="../../sec/default-password"
 $Env:BASE_DC_VALUE="data-holder"
 
-./temp/PingDirectory/bat/manage-profile setup --licenseKeyFile ./licenses/PingDirectory.lic --profile ./temp/PingDataSync/pd.profile --useEnvironmentVariables
+
+./temp/PingDataSync/bat/manage-profile setup --licenseKeyFile ./licenses/PingDirectory.lic --profile ./temp/PingDataSync/pd.profile --useEnvironmentVariables
